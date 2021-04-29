@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
+import { SignIn, Navigation } from "../../components";
 
 export const Login = () => {
   return (
-    <h1>hi</h1>
-  )
-}
+    <>
+      <Navigation />
+      <SignIn />
+    </>
+  );
+};
