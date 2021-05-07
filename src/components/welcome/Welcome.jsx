@@ -6,3 +6,7 @@ export const Welcome = ({ name = "Lucy" }) => {
     </>
   );
 };
+
+
+// text needs to change depending on whether on wall or timeline pages
+// probably break into two additional components?

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import logo from "../../images/logo.png";
+import { Link } from "react-router-dom";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -25,12 +26,22 @@ const NavigationActions = styled.div`
 export const Navigation = () => {
   return (
     <NavigationContainer>
-      <BrandDetails>
-        <img src={logo} alt={logo} width="30px" height="30px" padding-right="12px" />
-        <div>Open chat</div>
-      </BrandDetails>
+      <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+        <BrandDetails>
+          <img
+            src={logo}
+            alt={logo}
+            width="30px"
+            height="30px"
+            padding-right="12px"
+          />
+          <div>Open chat</div>
+        </BrandDetails>
+      </Link>
       <NavigationActions>
-        <div>Follow users</div>
+        <Link to="/findUsers">
+          <button>Follow users</button>
+        </Link>
         <button>Log Out</button>
       </NavigationActions>
     </NavigationContainer>
