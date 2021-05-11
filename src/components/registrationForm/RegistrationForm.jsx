@@ -77,7 +77,11 @@ export const RegistrationForm = () => {
                   password: password,
                   about: about,
                 })
-                .then(history.push("/"))
+                .then(() => {
+                  localStorage.setItem("authToken", "bamboo")
+                  history.push("/")
+                }
+                )
                 .then(function (response) {
                   console.log(response);
                 })

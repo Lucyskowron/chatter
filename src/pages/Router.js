@@ -14,11 +14,30 @@ export const Routing = () => {
       <Switch>
         <Route path="/login" component={Login} exact></Route>
         <Route path="/register" component={Register} exact></Route>
-        <Route path="/timeline" component={Timeline}></Route>
-        <Route path="/findUsers" component={FindUsers}></Route>
-        <Route path="/" component={Wall}></Route>
+        <Route path="/timeline" component={Timeline} exact></Route>
+        <Route path="/findUsers" component={FindUsers} exact></Route>
+        <PrivateRoute path="/" component={Wall}></PrivateRoute>
         <Route path="*" render={() => <Redirect path="/" />}></Route>
       </Switch>
     </Router>
   )
 }
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("authToken") ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+    )  }
